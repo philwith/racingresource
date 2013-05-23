@@ -24,8 +24,8 @@ namespace RacingResource
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap*"));
-            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css", "~/Content/bootstrap-responsive.css"));
-
+            //bundles.Add(new StyleBundle("~/Content/bootswatch").Include("~/Content/bootswatch/shamrock/bootstrap.css", "~/Content/bootswatch/amelia/bootstrap-responsive.css"));
+            bundles.Add(new StyleBundle("~/Content/mytheme").Include("~/Content/mytheme/bootstrap.css", "~/Content/mytheme/bootstrap-responsive.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
