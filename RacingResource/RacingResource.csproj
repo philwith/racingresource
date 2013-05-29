@@ -138,6 +138,7 @@
     <Compile Include="Controllers\ExampleLayoutsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseController.cs" />
+    <Compile Include="Controllers\TrainerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -145,9 +146,22 @@
     <Compile Include="Migrations\201305221307067_initial.Designer.cs">
       <DependentUpon>201305221307067_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305291505525_Add_UKHR_HorseID.cs" />
+    <Compile Include="Migrations\201305291505525_Add_UKHR_HorseID.Designer.cs">
+      <DependentUpon>201305291505525_Add_UKHR_HorseID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305291611360_Add_UKHR_HorseID_And_Index.cs" />
+    <Compile Include="Migrations\201305291611360_Add_UKHR_HorseID_And_Index.Designer.cs">
+      <DependentUpon>201305291611360_Add_UKHR_HorseID_And_Index.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305291734128_Trainer.cs" />
+    <Compile Include="Migrations\201305291734128_Trainer.Designer.cs">
+      <DependentUpon>201305291734128_Trainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Horse.cs" />
     <Compile Include="Models\RacingResourceContext.cs" />
+    <Compile Include="Models\Trainer.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />
     <Compile Include="NavigationRoutes\NavigationExtensions.cs" />
@@ -278,6 +292,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="Properties\PublishProfiles\racingresource - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\racingresource - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -333,6 +349,11 @@
     <Content Include="Views\ExampleLayouts\Marketing.cshtml" />
     <Content Include="Views\ExampleLayouts\Fluid.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Trainer\Index.cshtml" />
+    <Content Include="Views\Trainer\Details.cshtml" />
+    <Content Include="Views\Trainer\Create.cshtml" />
+    <Content Include="Views\Trainer\Edit.cshtml" />
+    <Content Include="Views\Trainer\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -343,6 +364,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201305221307067_initial.resx">
       <DependentUpon>201305221307067_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305291505525_Add_UKHR_HorseID.resx">
+      <DependentUpon>201305291505525_Add_UKHR_HorseID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305291611360_Add_UKHR_HorseID_And_Index.resx">
+      <DependentUpon>201305291611360_Add_UKHR_HorseID_And_Index.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305291734128_Trainer.resx">
+      <DependentUpon>201305291734128_Trainer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
