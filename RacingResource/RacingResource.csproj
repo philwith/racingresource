@@ -138,6 +138,7 @@
     <Compile Include="Controllers\ExampleLayoutsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseController.cs" />
+    <Compile Include="Controllers\JockeyController.cs" />
     <Compile Include="Controllers\TrainerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -158,8 +159,13 @@
     <Compile Include="Migrations\201305291734128_Trainer.Designer.cs">
       <DependentUpon>201305291734128_Trainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305301643349_Jockey.cs" />
+    <Compile Include="Migrations\201305301643349_Jockey.Designer.cs">
+      <DependentUpon>201305301643349_Jockey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Horse.cs" />
+    <Compile Include="Models\Jockey.cs" />
     <Compile Include="Models\RacingResourceContext.cs" />
     <Compile Include="Models\Trainer.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
@@ -354,6 +360,11 @@
     <Content Include="Views\Trainer\Create.cshtml" />
     <Content Include="Views\Trainer\Edit.cshtml" />
     <Content Include="Views\Trainer\Delete.cshtml" />
+    <Content Include="Views\Jockey\Index.cshtml" />
+    <Content Include="Views\Jockey\Details.cshtml" />
+    <Content Include="Views\Jockey\Create.cshtml" />
+    <Content Include="Views\Jockey\Edit.cshtml" />
+    <Content Include="Views\Jockey\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -373,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305291734128_Trainer.resx">
       <DependentUpon>201305291734128_Trainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201305301643349_Jockey.resx">
+      <DependentUpon>201305301643349_Jockey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
