@@ -12,6 +12,12 @@
         background-repeat:no-repeat;
     } 
 }
+@media (max-width: 480px) { 
+    .hero-unit h1 { 
+        font-size: 40px;
+    }  
+}
+
 
 header, footer, nav, section {
     display: block;
