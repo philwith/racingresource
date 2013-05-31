@@ -5,10 +5,22 @@
     background-color: #fff;
 }
 
+@media (min-width: 980px) { 
+    body { 
+        padding-top: 60px; 
+        background-image:url(/Content/images/background3.jpg);
+        background-repeat:no-repeat;
+    } 
+}
+
 header, footer, nav, section {
     display: block;
 }
 
+.content {
+    padding:15px;
+    background-color:#fff
+}
 
 /* Styles for basic forms
 -----------------------------------------------------------*/
