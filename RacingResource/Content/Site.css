@@ -10,12 +10,26 @@
         padding-top: 60px; 
         background-image:url(/Content/images/background3.jpg);
         background-repeat:no-repeat;
-    } 
+    }
+    .content
+    {
+        padding: 15px;
+    }
 }
-@media (max-width: 480px) { 
+@media (max-width: 480px) {
+    .hero-unit
+    {
+        padding:30px;
+    }
+
     .hero-unit h1 { 
         font-size: 40px;
-    }  
+    }
+
+    .content
+    {
+        padding:5px;
+    }
 }
 
 
@@ -24,7 +38,6 @@ header, footer, nav, section {
 }
 
 .content {
-    padding:15px;
     background-color:#fff
 }
 
