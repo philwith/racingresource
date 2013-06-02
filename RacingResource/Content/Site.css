@@ -1,6 +1,6 @@
 ﻿body {
     font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-family: "Marmelad", Verdana, Helvetica, Sans-Serif;
     color: #232323;
     background-color: #fff;
 }
@@ -32,6 +32,14 @@
     }
 }
 
+h1, h2
+{
+    color:#426c0b;
+}
+
+.hero-unit h1 { 
+        color:#283A10;
+    }
 
 header, footer, nav, section {
     display: block;
