@@ -22,5 +22,7 @@ namespace RacingResource.Models
         public DbSet<Trainer> Trainers { get; set; }
 
         public DbSet<Jockey> Jockeys { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
     }
 }
