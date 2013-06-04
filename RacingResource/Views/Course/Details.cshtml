@@ -1,29 +1,26 @@
 ﻿@model RacingResource.Models.Course
+@using BootstrapSupport
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Name;
 }
 
-<h2>Details</h2>
-
 <fieldset>
-    <legend>Course</legend>
+    <legend>@Model.Name <small>Details</small></legend>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.UKHR_CourseID)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UKHR_CourseID)
-    </div>
+    <dl class="dl-horizontal">
+        @foreach(var property in Model.VisibleProperties())
+        {
+            <dt>
+                @property.GetLabel().ToSeparatedWords()
+            </dt>
+            <dd>
+                @Html.Display(property.Name)                
+            </dd>
+        }
+    </dl>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", Model.GetIdValue()) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -164,6 +164,10 @@
     <Compile Include="Migrations\201305301643349_Jockey.Designer.cs">
       <DependentUpon>201305301643349_Jockey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306041509108_Course.cs" />
+    <Compile Include="Migrations\201306041509108_Course.Designer.cs">
+      <DependentUpon>201306041509108_Course.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Horse.cs" />
@@ -399,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305301643349_Jockey.resx">
       <DependentUpon>201305301643349_Jockey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306041509108_Course.resx">
+      <DependentUpon>201306041509108_Course.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,29 +1,26 @@
-﻿@model RacingResource.Models.Jockey
+﻿@using BootstrapSupport
+@model RacingResource.Models.Jockey
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Name;
 }
 
-<h2>Details</h2>
-
 <fieldset>
-    <legend>Jockey</legend>
+    <legend>@Model.GetLabel() <small>Details</small></legend>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.UKHR_JockeyID)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UKHR_JockeyID)
-    </div>
+    <dl class="dl-horizontal">
+        @foreach(var property in Model.VisibleProperties())
+        {
+            <dt>
+                @property.GetLabel().ToSeparatedWords()
+            </dt>
+            <dd>
+                @Html.Display(property.Name)                
+            </dd>
+        }
+    </dl>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", Model.GetIdValue()) |
     @Html.ActionLink("Back to List", "Index")
 </p>

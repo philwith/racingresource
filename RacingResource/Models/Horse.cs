@@ -7,6 +7,7 @@ using System.Web;
 
 namespace RacingResource.Models
 {
+    [DisplayColumn("Name")]
     public class Horse
     {
         public int Id { get; set; }
@@ -14,7 +15,6 @@ namespace RacingResource.Models
         public string Name { get; set; }
         [DisplayName("Year of Birth")]
         public int YearOfBirth { get; set; }
-        [ScaffoldColumn(false)]
         public int UKHR_HorseID { get; set; }
         public virtual Trainer Trainer { get; set; }
     }
