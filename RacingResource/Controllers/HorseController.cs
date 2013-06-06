@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RacingResource.Models;
+using PagedList;
 
 namespace RacingResource.Controllers
 {
@@ -16,9 +17,10 @@ namespace RacingResource.Controllers
         //
         // GET: /Horse/
 
-        public ActionResult Index()
+        public ActionResult Index(int? p)
         {
-            return View(db.Horses.ToList());
+            int page = p ?? 1;
+            return View(db.Horses.OrderBy(h => h.Name).ToPagedList(page, 10));
         }
 
         //
@@ -26,7 +28,7 @@ namespace RacingResource.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Horse horse = db.Horses.Find(id);
+            Horse horse = db.Horses.Include("SireProgeny").Include("DamProgeny").FirstOrDefault<Horse>(h => h.Id == id);
             if (horse == null)
             {
                 return HttpNotFound();

@@ -24,5 +24,22 @@ namespace RacingResource.Models
         public DbSet<Jockey> Jockeys { get; set; }
 
         public DbSet<Course> Courses { get; set; }
+
+        #region Methods
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Horse>().
+              HasOptional(e => e.Sire).
+              WithMany(e => e.SireProgeny).
+              HasForeignKey(m => m.SireId);
+
+            modelBuilder.Entity<Horse>().
+             HasOptional(e => e.Dam).
+             WithMany(e => e.DamProgeny).
+             HasForeignKey(m => m.DamId);
+        }
+
+        #endregion
     }
 }
