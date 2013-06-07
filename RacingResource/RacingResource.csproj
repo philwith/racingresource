@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201306071334146_TrainerAddress.Designer.cs">
       <DependentUpon>201306071334146_TrainerAddress.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306071612564_DropIndex.cs" />
+    <Compile Include="Migrations\201306071612564_DropIndex.Designer.cs">
+      <DependentUpon>201306071612564_DropIndex.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
@@ -457,6 +461,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306071334146_TrainerAddress.resx">
       <DependentUpon>201306071334146_TrainerAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306071612564_DropIndex.resx">
+      <DependentUpon>201306071612564_DropIndex.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
