@@ -140,6 +140,7 @@
     <Compile Include="BootstrapSupport\HtmlHelpers\GlyphIcons.cs" />
     <Compile Include="BootstrapSupport\HtmlHelpers\Paging.cs" />
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ExampleLayoutsController.cs" />
@@ -186,7 +187,20 @@
     <Compile Include="Migrations\201306061556126_Progeny.Designer.cs">
       <DependentUpon>201306061556126_Progeny.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306071200017_TrainerChanges.cs" />
+    <Compile Include="Migrations\201306071200017_TrainerChanges.Designer.cs">
+      <DependentUpon>201306071200017_TrainerChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306071203337_Addresses.cs" />
+    <Compile Include="Migrations\201306071203337_Addresses.Designer.cs">
+      <DependentUpon>201306071203337_Addresses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306071334146_TrainerAddress.cs" />
+    <Compile Include="Migrations\201306071334146_TrainerAddress.Designer.cs">
+      <DependentUpon>201306071334146_TrainerAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Horse.cs" />
     <Compile Include="Models\Jockey.cs" />
@@ -434,6 +448,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306061556126_Progeny.resx">
       <DependentUpon>201306061556126_Progeny.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306071200017_TrainerChanges.resx">
+      <DependentUpon>201306071200017_TrainerChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306071203337_Addresses.resx">
+      <DependentUpon>201306071203337_Addresses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306071334146_TrainerAddress.resx">
+      <DependentUpon>201306071334146_TrainerAddress.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

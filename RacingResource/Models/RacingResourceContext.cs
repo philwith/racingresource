@@ -25,6 +25,8 @@ namespace RacingResource.Models
 
         public DbSet<Course> Courses { get; set; }
 
+        public DbSet<Address> Addresses { get; set; }
+
         #region Methods
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

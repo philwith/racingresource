@@ -6,38 +6,36 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RacingResource.Models;
-using PagedList;
 
 namespace RacingResource.Controllers
 {
-    public class HorseController : Controller
+    public class AddressController : Controller
     {
         private RacingResourceContext db = new RacingResourceContext();
 
         //
-        // GET: /Horse/
+        // GET: /Address/
 
-        public ActionResult Index(int? p)
+        public ActionResult Index()
         {
-            int page = p ?? 1;
-            return View(db.Horses.OrderBy(h => h.Name).ToPagedList(page, 20));
+            return View(db.Addresses.ToList());
         }
 
         //
-        // GET: /Horse/Details/5
+        // GET: /Address/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            Horse horse = db.Horses.Include("SireProgeny").Include("DamProgeny").FirstOrDefault<Horse>(h => h.Id == id);
-            if (horse == null)
+            Address address = db.Addresses.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(horse);
+            return View("../Shared/Details", address);
         }
 
         //
-        // GET: /Horse/Create
+        // GET: /Address/Create
 
         public ActionResult Create()
         {
@@ -45,70 +43,73 @@ namespace RacingResource.Controllers
         }
 
         //
-        // POST: /Horse/Create
+        // POST: /Address/Create
 
         [HttpPost]
-        public ActionResult Create(Horse horse)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Address address)
         {
             if (ModelState.IsValid)
             {
-                db.Horses.Add(horse);
+                db.Addresses.Add(address);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(horse);
+            return View(address);
         }
 
         //
-        // GET: /Horse/Edit/5
+        // GET: /Address/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            Horse horse = db.Horses.Find(id);
-            if (horse == null)
+            Address address = db.Addresses.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(horse);
+            return View(address);
         }
 
         //
-        // POST: /Horse/Edit/5
+        // POST: /Address/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Horse horse)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Address address)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(horse).State = EntityState.Modified;
+                db.Entry(address).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(horse);
+            return View(address);
         }
 
         //
-        // GET: /Horse/Delete/5
+        // GET: /Address/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            Horse horse = db.Horses.Find(id);
-            if (horse == null)
+            Address address = db.Addresses.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(horse);
+            return View(address);
         }
 
         //
-        // POST: /Horse/Delete/5
+        // POST: /Address/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Horse horse = db.Horses.Find(id);
-            db.Horses.Remove(horse);
+            Address address = db.Addresses.Find(id);
+            db.Addresses.Remove(address);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

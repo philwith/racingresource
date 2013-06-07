@@ -1,4 +1,6 @@
-﻿@model IEnumerable<RacingResource.Models.Trainer>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<RacingResource.Models.Trainer>
 
 @{
     ViewBag.Title = "Trainers";
@@ -9,14 +11,17 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@Html.PagedListPager(Model, p => Url.Action("Index", new {p}) )
+
 <table class="table table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.First().Forename)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UKHR_TrainerID)
+                @Html.DisplayNameFor(model => model.First().Surname)
             </th>
             <th></th>
         </tr>
@@ -24,10 +29,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.Forename)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UKHR_TrainerID)
+            @Html.DisplayFor(modelItem => item.Surname)
         </td>
         <td>
             <div class="btn-group">

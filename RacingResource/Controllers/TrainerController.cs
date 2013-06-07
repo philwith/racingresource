@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RacingResource.Models;
+using PagedList;
 
 namespace RacingResource.Controllers
 {
@@ -16,9 +17,10 @@ namespace RacingResource.Controllers
         //
         // GET: /Trainer/
 
-        public ActionResult Index()
+        public ActionResult Index(int? p)
         {
-            return View(db.Trainers.ToList());
+            int page = p ?? 1;
+            return View(db.Trainers.OrderBy(t => t.Surname).ToPagedList(page, 20));
         }
 
         //
@@ -26,12 +28,12 @@ namespace RacingResource.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Trainer trainer = db.Trainers.Find(id);
+            Trainer trainer = db.Trainers.Include(t => t.Address).FirstOrDefault(t => t.Id == id);
             if (trainer == null)
             {
                 return HttpNotFound();
             }
-            return View(trainer);
+            return View("../Shared/Details", trainer);
         }
 
         //
