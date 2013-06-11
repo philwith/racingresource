@@ -2,24 +2,87 @@
 @using BootstrapSupport
 
 @{
-    ViewBag.Title = Model.Name;
+    ViewBag.Title = Model.Forename + " " + Model.Surname;
 }
 
 <fieldset>
-    <legend>@Model.Name <small>Details</small></legend>
-
-    <dl class="dl-horizontal">
-        @foreach(var property in Model.VisibleProperties())
-        {
-            <dt>
-                @property.GetLabel().ToSeparatedWords()
-            </dt>
-            <dd>
-                @Html.Display(property.Name)                
-            </dd>
-        }
+    <legend>@(Model.Forename + " " + Model.Surname) <small>Details</small></legend>
+    <dl class="dl-horizontal"> <!-- use this class on the dl if you want horizontal styling http://twitter.github.com/bootstrap/base-css.html#typography  class="dl-horizontal"-->     
+        <dt>
+            Licence
+        </dt>
+        <dd>
+            @Model.LicenceType
+        </dd>
+        <dt>
+            Region
+        </dt>
+        <dd>
+            @Model.Address.AddressRegion       
+        </dd>
+        <dt>
+            Postcode
+        </dt>
+        <dd>
+            @Model.Address.PostalCode       
+        </dd>
+        <dt>
+            Horses
+        </dt>
+        <dd>
+            @(Model.Horses == null ? 0 : Model.Horses.Count())
+        </dd>
     </dl>
+    
 </fieldset>
+<h4>Horses in Training</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Foaled
+            </th>
+            <th>
+                Sex
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+@foreach (var item in Model.Horses) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+         <td>
+                <div class="btn-group">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                        Action
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @{                          
+                            <li>@Html.ActionLink("Edit", "Edit", new { id=item.Id })</li>
+                            <li>@Html.ActionLink("Details", "Details", new { id=item.Id })</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Delete", "Delete", new { id=item.Id })</li>   
+                        }
+                    </ul>
+                </div>
+
+            </td>
+    </tr>
+}
+
+</table>
 <p>
     @Html.ActionLink("Edit", "Edit", Model.GetIdValue()) |
     @Html.ActionLink("Back to List", "Index")

@@ -33,7 +33,7 @@ namespace RacingResource.Controllers
             {
                 return HttpNotFound();
             }
-            return View("../Shared/Details", trainer);
+            return View(trainer);
         }
 
         //
