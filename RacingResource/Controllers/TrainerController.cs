@@ -88,7 +88,7 @@ namespace RacingResource.Controllers
             {
                 return HttpNotFound();
             }
-            return View("Shared/",trainer);
+            return View(trainer);
         }
 
         //
