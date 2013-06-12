@@ -17,9 +17,26 @@ namespace RacingResource.Controllers
         //
         // GET: /Trainer/
 
-        public ActionResult Index(int? p)
+        public ActionResult Index(int? p, string s, string cs)
         {
-            int page = p ?? 1;
+             int page = p ?? 1;
+            ViewBag.Page = p;
+            ViewBag.CurrentSearch = cs;
+
+            if (Request.HttpMethod == "GET")
+            {
+                s = cs;
+            }
+            else
+            {
+                page = 1;
+                ViewBag.Page = null;
+            }
+            ViewBag.CurrentSearch = s;
+            if (!String.IsNullOrEmpty(s))
+            {
+                return View(db.Trainers.Where(t => (t.Forename + " " + t.Surname).ToLower().Contains(s.ToLower())).OrderBy(t => t.Surname).ToPagedList(page, 20));
+            }
             return View(db.Trainers.OrderBy(t => t.Surname).ToPagedList(page, 20));
         }
 
@@ -71,7 +88,7 @@ namespace RacingResource.Controllers
             {
                 return HttpNotFound();
             }
-            return View(trainer);
+            return View("Shared/",trainer);
         }
 
         //

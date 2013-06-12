@@ -23,7 +23,7 @@
         <dt>
             Postcode
         </dt>
-        <dd>
+        <dd id="postcode">
             @Model.Address.PostalCode       
         </dd>
         <dt>
@@ -35,6 +35,10 @@
     </dl>
     
 </fieldset>
+
+<div id="map-canvas"></div>
+
+
 <h4>Horses in Training</h4>
 <table class="table table-striped">
     <thead>
@@ -87,3 +91,49 @@
     @Html.ActionLink("Edit", "Edit", Model.GetIdValue()) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section scripts {
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script type="text/javascript">
+        var myCenter = new google.maps.LatLng(53, -1.33);
+
+        var marker = new google.maps.Marker({
+            position: myCenter,
+            url: '/',
+            animation: google.maps.Animation.DROP
+        });
+
+        var geocoder;
+
+        function codeAddress(map) {
+            var postcode = '@(Model.Address.PostalCode)';
+            geocoder.geocode({ 'address': postcode }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    marker.position = results[0].geometry.location;
+                    marker.setMap(map);
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status + ' ' + postcode);
+                }
+            });
+        }
+
+        function initialize() {
+            geocoder = new google.maps.Geocoder();
+            var mapProp = {
+                center: myCenter,
+                zoom: 10,
+                draggable: false,
+                scrollwheel: false,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("map-canvas"), mapProp);
+
+            codeAddress(map);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+        google.maps.event.addListener(marker, 'click', function () { window.location.href = marker.url; });
+    </script>
+}

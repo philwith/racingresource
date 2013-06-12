@@ -17,9 +17,28 @@ namespace RacingResource.Controllers
         //
         // GET: /Horse/
 
-        public ActionResult Index(int? p)
+        public ActionResult Index(int? p, string s, string cs)
         {
             int page = p ?? 1;
+            ViewBag.Page = p;
+            ViewBag.CurrentSearch = cs;
+
+            if (Request.HttpMethod == "GET")
+            {
+                s = cs;
+            }
+            else
+            {
+                page = 1;
+                ViewBag.Page = null;
+            }
+            ViewBag.CurrentSearch = s;
+            if (!String.IsNullOrEmpty(s))
+            {
+                return View(db.Horses.Where(h => h.Name.ToLower().Contains(s.ToLower())).OrderBy(h => h.Name).ToPagedList(page, 20));
+            }
+
+
             return View(db.Horses.OrderBy(h => h.Name).ToPagedList(page, 20));
         }
 
