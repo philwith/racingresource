@@ -203,6 +203,10 @@
     <Compile Include="Migrations\201306071612564_DropIndex.Designer.cs">
       <DependentUpon>201306071612564_DropIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306141323442_TwitterIds.cs" />
+    <Compile Include="Migrations\201306141323442_TwitterIds.Designer.cs">
+      <DependentUpon>201306141323442_TwitterIds.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
@@ -416,8 +420,8 @@
     <Content Include="Views\Course\Create.cshtml" />
     <Content Include="Views\Course\Edit.cshtml" />
     <Content Include="Views\Course\Delete.cshtml" />
-    <Content Include="Views\Trainer\Edit.cshtml" />
     <Content Include="Views\Trainer\Create.cshtml" />
+    <Content Include="Views\Trainer\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -464,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306071612564_DropIndex.resx">
       <DependentUpon>201306071612564_DropIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306141323442_TwitterIds.resx">
+      <DependentUpon>201306141323442_TwitterIds.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

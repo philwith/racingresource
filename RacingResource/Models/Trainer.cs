@@ -17,10 +17,12 @@ namespace RacingResource.Models
         public string Surname { get; set; }
         [MaxLength(255)]
         public string LicenceType { get; set; }
+        [ScaffoldColumn(false)]
         public int? UKHR_TrainerID { get; set; }
         public int? AddressId { get; set; }
         public virtual ICollection<Horse> Horses { get; set; }
         [ForeignKey("AddressId")]
         public virtual Address Address { get; set; }
+        public string TwitterId { get; set; }
     }
 }

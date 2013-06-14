@@ -31,6 +31,7 @@ namespace RacingResource.Models
         [DisplayFormat(NullDisplayText = "-")]
         public int? HurdleRating { get; set; }
         [DisplayFormat(NullDisplayText = "-")]
+        [ScaffoldColumn(false)]
         public int? UKHR_HorseID { get; set; }
         [DisplayFormat(NullDisplayText = "-")]
         public int? SireId { get; set; }
@@ -50,5 +51,6 @@ namespace RacingResource.Models
         [ForeignKey("DamId")]
         [DisplayFormat(NullDisplayText = "-")]
         public virtual ICollection<Horse> DamProgeny { get; set; }
+        public string TwitterId { get; set; }
     }
 }

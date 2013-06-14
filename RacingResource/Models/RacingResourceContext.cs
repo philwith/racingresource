@@ -40,6 +40,7 @@ namespace RacingResource.Models
              HasOptional(e => e.Dam).
              WithMany(e => e.DamProgeny).
              HasForeignKey(m => m.DamId);
+
         }
 
         #endregion

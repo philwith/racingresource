@@ -11,6 +11,8 @@ namespace RacingResource.Models
         public int Id { get; set; }
         [MaxLength(255)]
         public string Name { get; set; }
+        [ScaffoldColumn(false)]
         public int UKHR_JockeyID { get; set; }
+        public string TwitterId { get; set; }
     }
 }
