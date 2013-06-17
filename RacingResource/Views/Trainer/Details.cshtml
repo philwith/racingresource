@@ -1,8 +1,10 @@
 ﻿@model RacingResource.Models.Trainer
 @using BootstrapSupport
+@using LinqToTwitter
 
 @{
     ViewBag.Title = Model.Forename + " " + Model.Surname;
+    List<Status> tweets = (List<Status>)ViewData["Tweets"];
 }
 
 <fieldset>
@@ -37,6 +39,16 @@
 </fieldset>
 
 <div id="map-canvas"></div>
+
+<ul>
+    @foreach (var tweet in tweets)
+    {
+    <li>
+        <img src="@tweet.User.ProfileImageUrl" />
+      @tweet.Text
+    </li>
+    }
+</ul>
 
 <h4>Horses in Training</h4>
 <table class="table table-striped">

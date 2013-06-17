@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using RacingResource.Models;
 using PagedList;
+using RacingResource.Utilities;
+using LinqToTwitter;
 
 namespace RacingResource.Controllers
 {
@@ -50,6 +52,16 @@ namespace RacingResource.Controllers
             {
                 return HttpNotFound();
             }
+            var auth = TwitterUtilities.GetAuthorizer();
+            var ctx = new TwitterContext(auth);
+            var tweets =
+                from tweet in ctx.Status
+                where tweet.Type == StatusType.User
+                      && tweet.ScreenName == trainer.TwitterId
+                select tweet;
+
+            ViewData["Tweets"] = tweets.ToList();
+
             return View(trainer);
         }
 
