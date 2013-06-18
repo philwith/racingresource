@@ -7,48 +7,58 @@
     List<Status> tweets = (List<Status>)ViewData["Tweets"];
 }
 
-<fieldset>
-    <legend>@(Model.Forename + " " + Model.Surname) <small>Details</small></legend>
-    <dl class="dl-horizontal"> <!-- use this class on the dl if you want horizontal styling http://twitter.github.com/bootstrap/base-css.html#typography  class="dl-horizontal"-->     
-        <dt>
-            Licence
-        </dt>
-        <dd>
-            @Model.LicenceType
-        </dd>
-        <dt>
-            Region
-        </dt>
-        <dd>
-            @Model.Address.AddressRegion       
-        </dd>
-        <dt>
-            Postcode
-        </dt>
-        <dd id="postcode">
-            @Model.Address.PostalCode       
-        </dd>
-        <dt>
-            Horses
-        </dt>
-        <dd>
-            @(Model.Horses == null ? 0 : Model.Horses.Count())
-        </dd>
-    </dl>
-    
-</fieldset>
+<h1>@(Model.Forename + " " + Model.Surname)</h1>
 
-<div id="map-canvas"></div>
+<div class="row">
 
-<ul>
-    @foreach (var tweet in tweets)
+    @if(tweets != null)
     {
-    <li>
-        <img src="@tweet.User.ProfileImageUrl" />
-      @tweet.Text
-    </li>
+        <div class="span6">
+            <h3>Latest Tweets</h3>
+            <div class="twitterFeed">
+                <ul>
+                    @foreach (var tweet in tweets)
+                    {
+                        <li>
+                            <img src="@tweet.User.ProfileImageUrl" />
+                            @tweet.Text
+                        </li>
+                }
+                </ul>
+            </div>
+        </div>
     }
-</ul>
+    <div class="span6">
+        <fieldset>
+            <legend>Trainer <small>Details</small></legend>
+            <dl class="dl-horizontal">
+                <!-- use this class on the dl if you want horizontal styling http://twitter.github.com/bootstrap/base-css.html#typography  class="dl-horizontal"-->
+                <dt>Licence
+                </dt>
+                <dd>
+                    @Model.LicenceType
+                </dd>
+                <dt>Region
+                </dt>
+                <dd>
+                    @Model.Address.AddressRegion
+                </dd>
+                <dt>Postcode
+                </dt>
+                <dd id="postcode">
+                    @Model.Address.PostalCode
+                </dd>
+                <dt>Horses
+                </dt>
+                <dd>
+                    @(Model.Horses == null ? 0 : Model.Horses.Count())
+                </dd>
+            </dl>
+        </fieldset>
+        <h4>Locate on the Map</h4>
+        <div id="map-canvas"></div>
+    </div>
+</div>
 
 <h4>Horses in Training</h4>
 <table class="table table-striped">

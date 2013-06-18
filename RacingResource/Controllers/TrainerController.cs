@@ -44,7 +44,7 @@ namespace RacingResource.Controllers
 
         //
         // GET: /Trainer/Details/5
-
+        [OutputCache(Duration=180)]
         public ActionResult Details(int id = 0)
         {
             Trainer trainer = db.Trainers.Include(t => t.Address).FirstOrDefault(t => t.Id == id);
@@ -52,16 +52,21 @@ namespace RacingResource.Controllers
             {
                 return HttpNotFound();
             }
-            var auth = TwitterUtilities.GetAuthorizer();
-            var ctx = new TwitterContext(auth);
-            var tweets =
-                from tweet in ctx.Status
-                where tweet.Type == StatusType.User
-                      && tweet.ScreenName == trainer.TwitterId
-                select tweet;
+            if (trainer.TwitterId != null)
+            {
+                var auth = TwitterUtilities.GetAuthorizer();
+                var ctx = new TwitterContext(auth);
+                var tweets =
+                    from tweet in ctx.Status
+                    where tweet.Type == StatusType.User
+                          && tweet.ScreenName == trainer.TwitterId
+                    select tweet;
 
-            ViewData["Tweets"] = tweets.ToList();
-
+                if (tweets != null)
+                {
+                    ViewData["Tweets"] = tweets.ToList();
+                }
+            }
             return View(trainer);
         }
 

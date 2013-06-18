@@ -11,6 +11,7 @@ namespace RacingResource.Controllers
         //
         // GET: /Home/
 
+        [OutputCache(Duration=180)]
         public ActionResult Index()
         {
             return View();

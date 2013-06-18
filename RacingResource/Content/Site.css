@@ -15,6 +15,12 @@
     {
         padding: 15px;
     }
+    .fixedHeight {
+        height:1200px;
+        width:1200px;
+        overflow-y:auto;
+        margin:auto
+    }
 }
 @media (max-width: 480px) {
     .hero-unit
@@ -46,11 +52,35 @@ header, footer, nav, section {
 }
 
 .content {
-    background-color:#fff
+    background-color:#fff;
 }
 
 #map-canvas {
   width:300px;
   height:200px
+}
+
+.twitterFeed {
+    height:598px;
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #e8e8e8;
+}
+
+.twitterFeed ul {
+    list-style:none;
+    margin:0;
+}
+
+.twitterFeed li {
+    padding: 12px 12px 10px 12px;
+    border: 1px solid #e8e8e8;
+    border-width: 0 0 1px;
+    
 }
 
