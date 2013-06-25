@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "Racing Resource";
+    List<SyndicationItem> feed = (List<SyndicationItem>)ViewData["feed"];
 }
+@using System.ServiceModel.Syndication
+@using System.Xml.Linq
 
 <div class="hero-unit">
     <h1>Racing Resource</h1>
@@ -15,13 +18,22 @@
             <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
         </p>
     </div>
-    <div class="span6">
+    <div class="span6 rss">
         <h2>Latest News</h2>
-        <h3>Story 1</h3>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
-        <h3>Story 2</h3>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
+        @foreach (var item in feed)
+        {
+            <h4><a href="@item.Links[0].Uri" title="@Html.Raw(item.Title.Text)" target="_blank">@Html.Raw(item.Title.Text)</a></h4>
+            if(item.ElementExtensions.Any(e => e.OuterName == "thumbnail"))
+            {
+                <img src="@(item.ElementExtensions.Where(e => e.OuterName == "thumbnail").First().GetObject<XElement>().Attribute("url").Value)"/>
+            }
+            else if (item.Links.Any(l => l.MediaType != null && l.MediaType.StartsWith("image")))
+            {
+                 <img src="@(item.Links.Where(l => l.MediaType != null && l.MediaType.StartsWith("image")).First().Uri)"/>
+            }
+                
+            <p>@Html.Raw(HttpUtility.HtmlDecode(item.Summary.Text))</p>
+            <div style="clear:both"></div>
+        }
     </div>
 </div>

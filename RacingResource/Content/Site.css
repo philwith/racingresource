@@ -84,3 +84,13 @@ header, footer, nav, section {
     
 }
 
+.rss img
+{
+    float:left;
+    margin-right:10px;
+}
+.rss p
+{
+    margin-right:10px;
+}
+
