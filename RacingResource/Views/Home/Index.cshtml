@@ -11,29 +11,31 @@
     <p><a href="@Url.Action("About")" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
 </div>
 <div class="row-fluid">
+    <div class="span6 rss">
+        <h2>Latest News</h2>
+        @foreach (var item in feed)
+        {
+            <div class="item">
+                <h4><a href="@item.Links[0].Uri" title="@Html.Raw(item.Title.Text)" target="_blank">@Html.Raw(item.Title.Text)</a></h4>
+                @if(item.ElementExtensions.Any(e => e.OuterName == "thumbnail"))
+                {
+                    <img src="@(item.ElementExtensions.Where(e => e.OuterName == "thumbnail").First().GetObject<XElement>().Attribute("url").Value)"/>
+                }
+                else if (item.Links.Any(l => l.MediaType != null && l.MediaType.StartsWith("image")))
+                {
+                    <img src="@(item.Links.Where(l => l.MediaType != null && l.MediaType.StartsWith("image")).First().Uri)"/>
+                }
+                <span>@item.PublishDate.ToString(@"dd/MM/yy HH:mm:ss")</span>    
+                <p>@Html.Raw(HttpUtility.HtmlDecode(item.Summary.Text))</p>
+                <div style="clear:both"></div>
+            </div>
+        }
+    </div>
     <div class="span6">
         <h2>Latest Tweets</h2>
         <p>
             <a class="twitter-timeline" href="https://twitter.com/PhilWith/racingresource" data-widget-id="340495957470892033" data-chrome="noheader"></a>
             <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
         </p>
-    </div>
-    <div class="span6 rss">
-        <h2>Latest News</h2>
-        @foreach (var item in feed)
-        {
-            <h4><a href="@item.Links[0].Uri" title="@Html.Raw(item.Title.Text)" target="_blank">@Html.Raw(item.Title.Text)</a></h4>
-            if(item.ElementExtensions.Any(e => e.OuterName == "thumbnail"))
-            {
-                <img src="@(item.ElementExtensions.Where(e => e.OuterName == "thumbnail").First().GetObject<XElement>().Attribute("url").Value)"/>
-            }
-            else if (item.Links.Any(l => l.MediaType != null && l.MediaType.StartsWith("image")))
-            {
-                 <img src="@(item.Links.Where(l => l.MediaType != null && l.MediaType.StartsWith("image")).First().Uri)"/>
-            }
-                
-            <p>@Html.Raw(HttpUtility.HtmlDecode(item.Summary.Text))</p>
-            <div style="clear:both"></div>
-        }
     </div>
 </div>

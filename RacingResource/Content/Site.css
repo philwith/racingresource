@@ -84,6 +84,11 @@ header, footer, nav, section {
     
 }
 
+.rss .item {
+    margin-bottom:10px;
+    overflow: hidden;
+}
+
 .rss img
 {
     float:left;
@@ -92,5 +97,10 @@ header, footer, nav, section {
 .rss p
 {
     margin-right:10px;
+}
+
+.rss span {
+    color:#94B36B;
+    font-size:11px
 }
 
