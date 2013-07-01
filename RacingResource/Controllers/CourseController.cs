@@ -39,6 +39,7 @@ namespace RacingResource.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.AddressId = new SelectList(db.Addresses, "Id", "PostalCode");
             return View();
         }
 
@@ -55,7 +56,7 @@ namespace RacingResource.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.AddressId = new SelectList(db.Addresses, "Id", "PostalCode");
             return View(course);
         }
 
@@ -68,6 +69,14 @@ namespace RacingResource.Controllers
             if (course == null)
             {
                 return HttpNotFound();
+            }
+            if (course.AddressId != null)
+            {
+                ViewBag.Addresses = new SelectList(db.Addresses, "Id", "PostalCode");
+            }
+            else
+            {
+                ViewBag.Addresses = new SelectList(db.Addresses, "Id", "PostalCode", course.AddressId);
             }
             return View(course);
         }
@@ -85,6 +94,7 @@ namespace RacingResource.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.AddressId = new SelectList(db.Addresses, "Id", "PostalCode");
             return View(course);
         }
 

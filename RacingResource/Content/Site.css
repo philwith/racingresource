@@ -10,16 +10,11 @@
         padding-top: 60px; 
         background-image:url(/Content/images/background3.jpg);
         background-repeat:no-repeat;
+        background-attachment:fixed;
     }
     .content
     {
         padding: 15px;
-    }
-    .fixedHeight {
-        height:1200px;
-        width:1200px;
-        overflow-y:auto;
-        margin:auto
     }
 }
 @media (max-width: 480px) {

@@ -1,0 +1,43 @@
+﻿@model RacingResource.Models.Address
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Address</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StreetAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StreetAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AddressLocality)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AddressLocality)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AddressRegion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AddressRegion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PostalCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostalCode)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

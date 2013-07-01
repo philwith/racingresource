@@ -22,13 +22,16 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.UKHR_CourseID)
+            @Html.LabelFor(model => model.TwitterId)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.UKHR_CourseID)
-            @Html.ValidationMessageFor(model => model.UKHR_CourseID)
+            @Html.EditorFor(model => model.TwitterId)
+            @Html.ValidationMessageFor(model => model.TwitterId)
         </div>
-
+        <div class="editor-label">Address</div>
+        <div class="editor-field">
+            @Html.DropDownList("AddressId", String.Empty)
+        </div>
         <p>
             <input type="submit" value="Create" />
         </p>

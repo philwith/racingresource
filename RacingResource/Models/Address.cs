@@ -6,6 +6,7 @@ using System.Web;
 
 namespace RacingResource.Models
 {
+    [DisplayColumn("PostalCode")]
     public class Address
     {
         public int Id { get; set; }
