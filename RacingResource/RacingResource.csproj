@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201306141323442_TwitterIds.Designer.cs">
       <DependentUpon>201306141323442_TwitterIds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307022043431_AddressUpdate.cs" />
+    <Compile Include="Migrations\201307022043431_AddressUpdate.Designer.cs">
+      <DependentUpon>201307022043431_AddressUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
@@ -482,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306141323442_TwitterIds.resx">
       <DependentUpon>201306141323442_TwitterIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307022043431_AddressUpdate.resx">
+      <DependentUpon>201307022043431_AddressUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

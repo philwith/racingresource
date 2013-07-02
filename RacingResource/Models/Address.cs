@@ -22,5 +22,15 @@ namespace RacingResource.Models
         [MaxLength(10)]
         [DisplayFormat(NullDisplayText = "-")]
         public string PostalCode { get; set; }
+        [MaxLength(100)]
+        public string Website { get; set; }
+        [MaxLength(100)]
+        public string Email { get; set; }
+        [MaxLength(15)]
+        public string Telephone { get; set; }
+        
+
+
+
     }
 }
