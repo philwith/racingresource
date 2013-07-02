@@ -1,26 +1,111 @@
 ﻿@model RacingResource.Models.Course
 @using BootstrapSupport
+@using LinqToTwitter
 
 @{
     ViewBag.Title = Model.Name;
 }
 
-<fieldset>
-    <legend>@Model.Name <small>Details</small></legend>
+<h1>@(Model.Name)</h1>
 
-    <dl class="dl-horizontal">
-        @foreach(var property in Model.VisibleProperties())
-        {
-            <dt>
-                @property.GetLabel().ToSeparatedWords()
-            </dt>
-            <dd>
-                @Html.Display(property.Name)                
-            </dd>
-        }
-    </dl>
-</fieldset>
+<div class="row">
+
+    @if(ViewBag.Tweets != null)
+    {
+        <div class="span6">
+            <h3>Latest Tweets</h3>
+            <div class="twitterFeed">
+                <ul>
+                    @foreach (var tweet in ViewBag.Tweets)
+                    {
+                        <li>
+                            <img src="@tweet.User.ProfileImageUrl" />
+                            @tweet.Text
+                        </li>
+                }
+                </ul>
+            </div>
+        </div>
+    }
+    <div class="span6">
+        <fieldset>
+            <legend>Course <small>Details</small></legend>
+            <dl class="dl-horizontal">
+                <!-- use this class on the dl if you want horizontal styling http://twitter.github.com/bootstrap/base-css.html#typography  class="dl-horizontal"-->
+                
+                <dt>Street
+                </dt>
+                <dd>
+                    @Model.Address.StreetAddress
+                </dd>
+                <dt>Locality
+                </dt>
+                <dd>
+                    @Model.Address.AddressLocality
+                </dd>
+                <dt>Region
+                </dt>
+                <dd>
+                    @Model.Address.AddressRegion
+                </dd>
+                <dt>Postcode
+                </dt>
+                <dd id="postcode">
+                    @Model.Address.PostalCode
+                </dd>
+            </dl>
+        </fieldset>
+        <h4>Locate on the Map</h4>
+        <div id="map-canvas"></div>
+    </div>
+</div>
 <p>
     @Html.ActionLink("Edit", "Edit", Model.GetIdValue()) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section scripts {
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script type="text/javascript">
+        var myCenter = new google.maps.LatLng(53, -1.33);
+
+        var marker = new google.maps.Marker({
+            position: myCenter,
+            url: '/',
+            animation: google.maps.Animation.DROP
+        });
+
+        var geocoder;
+
+        function codeAddress(map) {
+            var postcode = '@(Model.Address.PostalCode)';
+            geocoder.geocode({ 'address': postcode }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    marker.position = results[0].geometry.location;
+                    marker.setMap(map);
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status + ' ' + postcode);
+                }
+            });
+        }
+
+        function initialize() {
+            geocoder = new google.maps.Geocoder();
+            var mapProp = {
+                center: myCenter,
+                zoom: 10,
+                draggable: false,
+                scrollwheel: false,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("map-canvas"), mapProp);
+
+            codeAddress(map);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+        google.maps.event.addListener(marker, 'click', function () { window.location.href = marker.url; });
+    </script>
+}

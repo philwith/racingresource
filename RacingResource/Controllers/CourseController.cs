@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RacingResource.Models;
+using RacingResource.Utilities;
+using LinqToTwitter;
 
 namespace RacingResource.Controllers
 {
@@ -24,12 +26,28 @@ namespace RacingResource.Controllers
         //
         // GET: /Course/Details/5
 
+        [OutputCache(Duration = 180)]
         public ActionResult Details(int id = 0)
         {
-            Course course = db.Courses.Find(id);
+            Course course = db.Courses.Include(t => t.Address).FirstOrDefault(t => t.Id == id);
             if (course == null)
             {
                 return HttpNotFound();
+            }
+            if (course.TwitterId != null)
+            {
+                var auth = TwitterUtilities.GetAuthorizer();
+                var ctx = new TwitterContext(auth);
+                var tweets =
+                    from tweet in ctx.Status
+                    where tweet.Type == StatusType.User
+                          && tweet.ScreenName == course.TwitterId
+                    select tweet;
+
+                if (tweets != null)
+                {
+                    ViewBag.Tweets = tweets.ToList();
+                }
             }
             return View(course);
         }
