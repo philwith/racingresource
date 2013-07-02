@@ -1,27 +1,38 @@
-﻿@model IEnumerable<RacingResource.Models.Course>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<RacingResource.Models.Course>
 
 @{
     ViewBag.Title = "Courses";
 }
 
 <h2>Courses</h2>
+@using (Html.BeginForm()) 
+{
+     <p>
+        Search By Name : @Html.TextBox("s", ViewBag.CurrentSearch as string, new { @class = "input-medium search-query" })
+        <button type="submit" class="btn">Search</button>
+    </p>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@Html.PagedListPager(Model, p => Url.Action("Index", new {p}) )
+
 <table class="table table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.First().Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TwitterId)
+                @Html.DisplayNameFor(model => model.First().TwitterId)
             </th>
             <th></th>
         </tr>
     </thead>
-
 @foreach (var item in Model) {
     <tr>
         <td>

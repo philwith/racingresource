@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using RacingResource.Models;
 using RacingResource.Utilities;
 using LinqToTwitter;
+using PagedList;
 
 namespace RacingResource.Controllers
 {
@@ -18,9 +19,27 @@ namespace RacingResource.Controllers
         //
         // GET: /Course/
 
-        public ActionResult Index()
+        public ActionResult Index(int? p, string s, string cs)
         {
-            return View(db.Courses.ToList());
+            int page = p ?? 1;
+            ViewBag.Page = p;
+            ViewBag.CurrentSearch = cs;
+
+            if (Request.HttpMethod == "GET")
+            {
+                s = cs;
+            }
+            else
+            {
+                page = 1;
+                ViewBag.Page = null;
+            }
+            ViewBag.CurrentSearch = s;
+            if (!String.IsNullOrEmpty(s))
+            {
+                return View(db.Courses.Where(t => t.Name.ToLower().Contains(s.ToLower())).OrderBy(t => t.Name).ToPagedList(page, 20));
+            }
+            return View(db.Courses.OrderBy(t => t.Name).ToPagedList(page, 20));
         }
 
         //
