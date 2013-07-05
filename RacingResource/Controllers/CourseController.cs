@@ -107,7 +107,7 @@ namespace RacingResource.Controllers
             {
                 return HttpNotFound();
             }
-            if (course.AddressId != null)
+            if (course.AddressId == null)
             {
                 ViewBag.Addresses = new SelectList(db.Addresses, "Id", "PostalCode");
             }
