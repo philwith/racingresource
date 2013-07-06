@@ -1,6 +1,7 @@
 ﻿@model RacingResource.Models.Course
 @using BootstrapSupport
 @using LinqToTwitter
+@using RacingResource.Utilities
 
 @{
     ViewBag.Title = Model.Name;
@@ -78,8 +79,8 @@
         var geocoder;
 
         function codeAddress(map) {
-            var postcode = '@(Model.Address.PostalCode)';
-            geocoder.geocode({ 'address': postcode }, function (results, status) {
+            var address = '@(Model.Address.ToFormattedString())';
+            geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     map.setCenter(results[0].geometry.location);
                     marker.position = results[0].geometry.location;

@@ -229,6 +229,7 @@
     <Compile Include="NavigationRoutes\NavigationRouteConfigurationExtensions.cs" />
     <Compile Include="NavigationRoutes\NavigationRouteFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Extensions.cs" />
     <Compile Include="Utilities\RssUtilities.cs" />
     <Compile Include="Utilities\TwitterUtilities.cs" />
   </ItemGroup>
