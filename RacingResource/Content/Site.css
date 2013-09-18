@@ -18,20 +18,59 @@
     }
 }
 @media (max-width: 480px) {
-    .hero-unit
-    {
-        padding:30px;
+    .hero-unit {
+        padding: 30px;
     }
 
-    .hero-unit h1 { 
-        font-size: 40px;
+        .hero-unit h1 {
+            font-size: 40px;
+        }
+
+    .content {
+        padding: 5px;
     }
 
-    .content
-    {
-        padding:5px;
+    table, thead, tbody, th, td, tr {
+        display: block;
     }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+    tr {
+        border: 1px solid #ccc;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%!important;
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: " "attr(data-label)" ";
+    }
+
+
 }
+
+
+
+
 
 h1, h2
 {
