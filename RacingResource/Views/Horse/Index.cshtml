@@ -39,16 +39,16 @@
     </thead>
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td data-label="@Html.DisplayNameFor(modelItem => item.Name)">
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
+        <td data-label="@Html.DisplayNameFor(modelItem => item.YearOfBirth)">
             @Html.DisplayFor(modelItem => item.YearOfBirth)
         </td>
-        <td>
+        <td data-label="@Html.DisplayNameFor(modelItem => item.Sex)">
             @Html.DisplayFor(modelItem => item.Sex)
         </td>
-         <td>
+         <td data-label="Actions">
                 <div class="btn-group">
                     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                         Action

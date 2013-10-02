@@ -62,53 +62,36 @@
 </div>
 
 <h4>Horses in Training</h4>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Foaled
-            </th>
-            <th>
-                Sex
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-@foreach (var item in Model.Horses) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YearOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sex)
-        </td>
-         <td>
-                <div class="btn-group">
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                        Action
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        @{                          
-                            <li>@Html.ActionLink("Edit", "Edit", new { id=item.Id })</li>
-                            <li>@Html.ActionLink("Details", "Details", new { id=item.Id })</li>
-                            <li class="divider"></li>
-                            <li>@Html.ActionLink("Delete", "Delete", new { id=item.Id })</li>   
-                        }
-                    </ul>
-                </div>
-
-            </td>
-    </tr>
-}
-
-</table>
+    <table class="table table-striped table-bordered table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Name
+                </th>
+                <th>Sex
+                </th>
+                <th>Foaled
+                </th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var h in Model.Horses.OrderBy(x=> x.Name))
+            {
+                <tr>
+                    <td data-label="Name">
+                        @Html.ActionLink(h.Name, "Details", "Horse", new { ID = h.Id }, null)
+                    </td>
+                    <td data-label="Sex">
+                        @h.Sex
+                    </td>
+                    <td data-label="Foaled">
+                        @h.YearOfBirth
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 <p>
     @Html.ActionLink("Edit", "Edit", Model.GetIdValue()) |
     @Html.ActionLink("Back to List", "Index")
