@@ -216,12 +216,22 @@
     <Compile Include="Migrations\201307022043431_AddressUpdate.Designer.cs">
       <DependentUpon>201307022043431_AddressUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310171320225_InitialResultStructure.cs" />
+    <Compile Include="Migrations\201310171320225_InitialResultStructure.Designer.cs">
+      <DependentUpon>201310171320225_InitialResultStructure.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Entry.cs" />
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\Feature.cs" />
     <Compile Include="Models\Horse.cs" />
     <Compile Include="Models\Jockey.cs" />
+    <Compile Include="Models\Meeting.cs" />
+    <Compile Include="Models\Race.cs" />
     <Compile Include="Models\RacingResourceContext.cs" />
+    <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Trainer.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />
@@ -490,6 +500,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201307022043431_AddressUpdate.resx">
       <DependentUpon>201307022043431_AddressUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310171320225_InitialResultStructure.resx">
+      <DependentUpon>201310171320225_InitialResultStructure.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

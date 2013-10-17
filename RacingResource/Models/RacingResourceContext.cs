@@ -41,6 +41,21 @@ namespace RacingResource.Models
              WithMany(e => e.DamProgeny).
              HasForeignKey(m => m.DamId);
 
+            modelBuilder.Entity<Race>().
+                HasOptional(e => e.Grade).
+                WithOptionalDependent().
+                Map(e => e.MapKey("RaceGradeId")).
+                WillCascadeOnDelete();
+
+            modelBuilder.Entity<Race>().
+                HasOptional(e => e.Type).
+                WithOptionalDependent().
+                Map(e => e.MapKey("RaceTypeId")).
+                WillCascadeOnDelete();
+
+            modelBuilder.Entity<Race>().
+                HasOptional(e => e.Feature).
+                WithMany(e => e.Runnings).WillCascadeOnDelete();
         }
 
         #endregion
