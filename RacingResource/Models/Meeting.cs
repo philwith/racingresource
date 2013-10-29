@@ -10,8 +10,7 @@ namespace RacingResource.Models
     public class Meeting
     {
         public int Id { get; set; }
-        [MaxLength(255)]
-        public string Name { get; set; }
+        public int BhaId { get; set; }
         public virtual Course Course { get; set; }
         public virtual ICollection<Race> Races { get; set; } 
     }

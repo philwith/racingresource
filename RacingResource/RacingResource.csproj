@@ -220,6 +220,18 @@
     <Compile Include="Migrations\201310171320225_InitialResultStructure.Designer.cs">
       <DependentUpon>201310171320225_InitialResultStructure.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310171536113_AddGoingToRace.cs" />
+    <Compile Include="Migrations\201310171536113_AddGoingToRace.Designer.cs">
+      <DependentUpon>201310171536113_AddGoingToRace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310281547053_BHAIds.cs" />
+    <Compile Include="Migrations\201310281547053_BHAIds.Designer.cs">
+      <DependentUpon>201310281547053_BHAIds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310281616499_Offtime.cs" />
+    <Compile Include="Migrations\201310281616499_Offtime.Designer.cs">
+      <DependentUpon>201310281616499_Offtime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
@@ -503,6 +515,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310171320225_InitialResultStructure.resx">
       <DependentUpon>201310171320225_InitialResultStructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310171536113_AddGoingToRace.resx">
+      <DependentUpon>201310171536113_AddGoingToRace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310281547053_BHAIds.resx">
+      <DependentUpon>201310281547053_BHAIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310281616499_Offtime.resx">
+      <DependentUpon>201310281616499_Offtime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

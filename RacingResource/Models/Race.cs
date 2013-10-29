@@ -13,9 +13,12 @@ namespace RacingResource.Models
         public int Id { get; set; }
         [MaxLength(255)]
         public string Name{ get; set; }
-        public TimeSpan OffTime { get; set; }
+        public DateTime OffTime { get; set; }
         public int? Distance { get; set; }
         public int? Prize { get; set; }
+        public string Going { get; set; }
+        public int BhaRid { get; set; }
+        public int BhaCid { get; set; }
         public virtual RaceType Type { get; set; }
         public virtual RaceGrade Grade { get; set; }
         public virtual Meeting Meeting { get; set; }
