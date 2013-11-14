@@ -19,4 +19,12 @@ namespace RacingResource.Models
         [MaxLength(255)]
         public string Name { get; set; }
     }
+
+    public class GoingDescription
+    {
+        public int Id { get; set; }
+        [MaxLength(255)]
+        public string Name { get; set; }
+    }
+
 }

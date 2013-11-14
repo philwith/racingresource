@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201310281616499_Offtime.Designer.cs">
       <DependentUpon>201310281616499_Offtime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201311141146216_GoingDescriptions.cs" />
+    <Compile Include="Migrations\201311141146216_GoingDescriptions.Designer.cs">
+      <DependentUpon>201311141146216_GoingDescriptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
@@ -524,6 +528,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310281616499_Offtime.resx">
       <DependentUpon>201310281616499_Offtime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311141146216_GoingDescriptions.resx">
+      <DependentUpon>201311141146216_GoingDescriptions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
