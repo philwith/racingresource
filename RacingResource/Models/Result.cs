@@ -10,7 +10,7 @@ namespace RacingResource.Models
     {
         public int Id { get; set; }
         public string Position { get; set; }
-        [MaxLength(10)]
+        [MaxLength(20)]
         public string Distance { get; set; }
         public double? StartingPrice { get; set; }
         public int? Weight { get; set; }

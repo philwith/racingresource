@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201311191719043_ResultJockey.Designer.cs">
       <DependentUpon>201311191719043_ResultJockey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201311202249249_ExtendedDistanceLength.cs" />
+    <Compile Include="Migrations\201311202249249_ExtendedDistanceLength.Designer.cs">
+      <DependentUpon>201311202249249_ExtendedDistanceLength.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
@@ -538,6 +542,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311191719043_ResultJockey.resx">
       <DependentUpon>201311191719043_ResultJockey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311202249249_ExtendedDistanceLength.resx">
+      <DependentUpon>201311202249249_ExtendedDistanceLength.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
