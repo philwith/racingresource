@@ -16,6 +16,7 @@ namespace RacingResource.Models
         public int? Weight { get; set; }
         public int? Rating { get; set; }
         public virtual Horse Horse { get; set; }
+        public virtual Jockey Jockey { get; set; }
         public virtual Race Race { get; set; }
     }
 }
