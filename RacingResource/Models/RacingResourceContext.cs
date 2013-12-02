@@ -31,6 +31,10 @@ namespace RacingResource.Models
 
         public DbSet<GoingDescription> GoingDescriptions { get; set; }
 
+        public DbSet<MeetingPage> MeetingPages { get; set; }
+
+        public DbSet<ResultPage> ResultPages { get; set; }
+
         #region Methods
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

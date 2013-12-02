@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201311202249249_ExtendedDistanceLength.Designer.cs">
       <DependentUpon>201311202249249_ExtendedDistanceLength.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312022325120_PageTables.cs" />
+    <Compile Include="Migrations\201312022325120_PageTables.Designer.cs">
+      <DependentUpon>201312022325120_PageTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
@@ -253,9 +257,11 @@
     <Compile Include="Models\Horse.cs" />
     <Compile Include="Models\Jockey.cs" />
     <Compile Include="Models\Meeting.cs" />
+    <Compile Include="Models\MeetingPage.cs" />
     <Compile Include="Models\Race.cs" />
     <Compile Include="Models\RacingResourceContext.cs" />
     <Compile Include="Models\Result.cs" />
+    <Compile Include="Models\ResultPage.cs" />
     <Compile Include="Models\Trainer.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />
@@ -545,6 +551,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311202249249_ExtendedDistanceLength.resx">
       <DependentUpon>201311202249249_ExtendedDistanceLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312022325120_PageTables.resx">
+      <DependentUpon>201312022325120_PageTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
