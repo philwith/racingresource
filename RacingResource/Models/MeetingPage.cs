@@ -9,5 +9,6 @@ namespace RacingResource.Models
     {
         public int Id { get; set; }
         public string Content { get; set; }
+        public virtual ICollection<ResultPage> ResultPages { get; set; }
     }
 }
