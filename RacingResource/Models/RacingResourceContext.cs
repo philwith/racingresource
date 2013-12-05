@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 
 namespace RacingResource.Models
 {
@@ -68,6 +69,9 @@ namespace RacingResource.Models
             modelBuilder.Entity<ResultPage>().
                 HasRequired(e => e.MeetingPage).
                 WithMany(e => e.ResultPages).WillCascadeOnDelete();
+
+            modelBuilder.Entity<MeetingPage>().Property(e => e.Id).
+                HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
         }
 
         #endregion

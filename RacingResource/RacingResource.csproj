@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201312022325120_PageTables.Designer.cs">
       <DependentUpon>201312022325120_PageTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312051628388_RemoveMeetingPageIdentity.cs" />
+    <Compile Include="Migrations\201312051628388_RemoveMeetingPageIdentity.Designer.cs">
+      <DependentUpon>201312051628388_RemoveMeetingPageIdentity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
@@ -554,6 +558,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312022325120_PageTables.resx">
       <DependentUpon>201312022325120_PageTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312051628388_RemoveMeetingPageIdentity.resx">
+      <DependentUpon>201312051628388_RemoveMeetingPageIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
