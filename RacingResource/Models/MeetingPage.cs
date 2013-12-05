@@ -8,6 +8,7 @@ namespace RacingResource.Models
     public class MeetingPage
     {
         public int Id { get; set; }
+        public int? BhaId { get; set; }
         public string Content { get; set; }
         public virtual ICollection<ResultPage> ResultPages { get; set; }
     }

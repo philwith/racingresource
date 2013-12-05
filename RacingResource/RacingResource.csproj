@@ -252,6 +252,10 @@
     <Compile Include="Migrations\201312051628388_RemoveMeetingPageIdentity.Designer.cs">
       <DependentUpon>201312051628388_RemoveMeetingPageIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312051659144_AddBhaIdToMeetingPage.cs" />
+    <Compile Include="Migrations\201312051659144_AddBhaIdToMeetingPage.Designer.cs">
+      <DependentUpon>201312051659144_AddBhaIdToMeetingPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
@@ -561,6 +565,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312051628388_RemoveMeetingPageIdentity.resx">
       <DependentUpon>201312051628388_RemoveMeetingPageIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312051659144_AddBhaIdToMeetingPage.resx">
+      <DependentUpon>201312051659144_AddBhaIdToMeetingPage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
