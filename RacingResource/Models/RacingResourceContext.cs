@@ -64,6 +64,10 @@ namespace RacingResource.Models
             modelBuilder.Entity<Race>().
                 HasOptional(e => e.Feature).
                 WithMany(e => e.Runnings).WillCascadeOnDelete();
+
+            modelBuilder.Entity<ResultPage>().
+                HasRequired(e => e.MeetingPage).
+                WithMany(e => e.ResultPages).WillCascadeOnDelete();
         }
 
         #endregion
