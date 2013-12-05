@@ -69,9 +69,6 @@ namespace RacingResource.Models
             modelBuilder.Entity<ResultPage>().
                 HasRequired(e => e.MeetingPage).
                 WithMany(e => e.ResultPages).WillCascadeOnDelete();
-
-            modelBuilder.Entity<MeetingPage>().Property(e => e.Id).
-                HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
         }
 
         #endregion
