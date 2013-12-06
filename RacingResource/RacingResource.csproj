@@ -256,6 +256,10 @@
     <Compile Include="Migrations\201312051659144_AddBhaIdToMeetingPage.Designer.cs">
       <DependentUpon>201312051659144_AddBhaIdToMeetingPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312061159566_NewJockeySchema.cs" />
+    <Compile Include="Migrations\201312061159566_NewJockeySchema.Designer.cs">
+      <DependentUpon>201312061159566_NewJockeySchema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
@@ -568,6 +572,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312051659144_AddBhaIdToMeetingPage.resx">
       <DependentUpon>201312051659144_AddBhaIdToMeetingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312061159566_NewJockeySchema.resx">
+      <DependentUpon>201312061159566_NewJockeySchema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

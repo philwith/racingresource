@@ -9,10 +9,18 @@ namespace RacingResource.Models
     public class Jockey
     {
         public int Id { get; set; }
+        [MaxLength(10)]
+        [Required]
+        public string Initials { get; set; }
         [MaxLength(255)]
-        public string Name { get; set; }
-        [ScaffoldColumn(false)]
-        public int UKHR_JockeyID { get; set; }
+        public string Forenames { get; set; }
+        [MaxLength(255)]
+        [Required]
+        public string Surname { get; set; }
+        [MaxLength(255)]
+        public string LicenceType { get; set; }
+        [MaxLength(15)]
         public string TwitterId { get; set; }
+        
     }
 }
