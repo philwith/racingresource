@@ -69,6 +69,17 @@ namespace RacingResource.Models
             modelBuilder.Entity<ResultPage>().
                 HasRequired(e => e.MeetingPage).
                 WithMany(e => e.ResultPages).WillCascadeOnDelete();
+
+            modelBuilder.Entity<Meeting>().
+               HasMany(e => e.Races).
+               WithRequired(e => e.Meeting).
+               WillCascadeOnDelete();
+
+            modelBuilder.Entity<Race>().
+             HasMany(e => e.Results).
+             WithRequired(e => e.Race).
+             WillCascadeOnDelete();
+
         }
 
         #endregion
