@@ -6,9 +6,9 @@
 }
 
 <h1>@Model.Name</h1>
-
+<h3>@Html.ActionLink(Model.Meeting.Course.Name, "Details", "Course", new { id = Model.Meeting.Course.Id }, null)</h3>
 <h4>@Model.OffTime.ToString("h:mm, dddd MMMM dd, yyyy")</h4>
-
+<span>Going: @Model.Going.Name</span>
 @if (Model.Results.Any())
 {
     <table class="table table-striped table-bordered table-condensed table-hover">
@@ -19,6 +19,9 @@
                 </th>
                 <th>
                     Name
+                </th>
+                <th>
+                    Distance
                 </th>
                 <th>
                     Weight
@@ -34,6 +37,7 @@
                 <tr>
                     @Html.ResponsiveTd("Position", r.Position)
                     @Html.ResponsiveTd("Name", Html.ActionLink(r.Horse.Name, "Details", "Horse", new { id = r.Horse.Id }, null))
+                    @Html.ResponsiveTd("Distance", r.Distance)
                     @Html.ResponsiveTd("Weight", StringUtilities.FormatWeight(r.Weight ?? 0))
                     @Html.ResponsiveTd("Odds", StringUtilities.DoubleToFraction(r.StartingPrice ?? 0.0))
                 </tr>
