@@ -1,0 +1,61 @@
+﻿@model RacingResource.Models.Race
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Race</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OffTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OffTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Distance)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Distance)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Prize)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Prize)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BhaRid)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BhaRid)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BhaCid)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BhaCid)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
