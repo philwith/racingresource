@@ -52,5 +52,6 @@ namespace RacingResource.Models
         [DisplayFormat(NullDisplayText = "-")]
         public virtual ICollection<Horse> DamProgeny { get; set; }
         public string TwitterId { get; set; }
+        public virtual ICollection<Result> Results { get; set; }
     }
 }
