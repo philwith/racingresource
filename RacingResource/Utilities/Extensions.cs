@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using RacingResource.Models;
+using System.Web.Mvc;
 
 namespace RacingResource.Utilities
 {
@@ -30,6 +31,17 @@ namespace RacingResource.Utilities
             sb.Append(address.PostalCode);
             return sb.ToString();
         }
+
+        public static MvcHtmlString ResponsiveTd(this HtmlHelper html, string label, string content)
+        {
+            return new MvcHtmlString(string.Format(@"<td data-label=""{0}"">{1}</td>", label, content));
+        }
+
+        public static MvcHtmlString ResponsiveTd(this HtmlHelper html, string label, MvcHtmlString content)
+        {
+            return new MvcHtmlString(string.Format(@"<td data-label=""{0}"">{1}</td>", label, content.ToHtmlString()));
+        }
+
     }
 
 }

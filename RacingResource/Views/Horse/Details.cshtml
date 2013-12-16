@@ -202,24 +202,12 @@
             @foreach(Result r in Model.Results.OrderByDescending(x => x.Race.OffTime))
             { 
                 <tr>
-                    <td>
-                        @r.Race.OffTime.ToString("d MMM yy")
-                    </td>
-                    <td>
-                        @Html.ActionLink(r.Race.Meeting.Course.Name,"Details","Course", new {id = r.Race.Meeting.Course.Id})
-                    </td>
-                    <td>
-                        @r.Race.Name
-                    </td>
-                    <td>
-                        @StringUtilities.FormatWeight(r.Weight ?? 0)
-                    </td>
-                    <td>
-                        @StringUtilities.DoubleToFraction(r.StartingPrice ?? 0.0)
-                    </td>
-                    <td>
-                        @r.Position
-                    </td>
+                    @Html.ResponsiveTd("Date", r.Race.OffTime.ToString("d MMM yy"))
+                    @Html.ResponsiveTd("Course", Html.ActionLink(r.Race.Meeting.Course.Name, "Details", "Course", new { id = r.Race.Meeting.Course.Id }, null))
+                    @Html.ResponsiveTd("Race", Html.ActionLink(r.Race.Name, "Details", "Race", new { id = r.Race.Id }, null))
+                    @Html.ResponsiveTd("Weight",StringUtilities.FormatWeight(r.Weight ?? 0))
+                    @Html.ResponsiveTd("Odds",  StringUtilities.DoubleToFraction(r.StartingPrice ?? 0.0))
+                    @Html.ResponsiveTd("Postion", r.Position)
                 </tr>
             }
         </tbody>
