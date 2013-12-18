@@ -26,7 +26,7 @@ namespace RacingResource.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Race race = db.Races.Find(id);
+            Race race = db.Races.Include("Going").Include("Meeting.Course").First(x => x.Id == id);
             if (race == null)
             {
                 return HttpNotFound();
