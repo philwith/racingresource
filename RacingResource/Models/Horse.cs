@@ -53,5 +53,7 @@ namespace RacingResource.Models
         public virtual ICollection<Horse> DamProgeny { get; set; }
         public string TwitterId { get; set; }
         public virtual ICollection<Result> Results { get; set; }
+        [DefaultValue(false)]
+        public Boolean IsActive { get; set; }
     }
 }

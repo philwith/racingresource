@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -24,5 +25,8 @@ namespace RacingResource.Models
         [ForeignKey("AddressId")]
         public virtual Address Address { get; set; }
         public string TwitterId { get; set; }
+        public string AlternateForename { get; set; }
+        [DefaultValue(true)]
+        public Boolean IsActive { get; set; }
     }
 }

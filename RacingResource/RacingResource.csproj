@@ -261,6 +261,10 @@
     <Compile Include="Migrations\201312061159566_NewJockeySchema.Designer.cs">
       <DependentUpon>201312061159566_NewJockeySchema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312181649533_IsActiveAndAlternateNames.cs" />
+    <Compile Include="Migrations\201312181649533_IsActiveAndAlternateNames.Designer.cs">
+      <DependentUpon>201312181649533_IsActiveAndAlternateNames.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Course.cs" />
@@ -582,6 +586,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312061159566_NewJockeySchema.resx">
       <DependentUpon>201312061159566_NewJockeySchema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312181649533_IsActiveAndAlternateNames.resx">
+      <DependentUpon>201312181649533_IsActiveAndAlternateNames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
