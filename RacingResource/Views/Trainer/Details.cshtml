@@ -4,11 +4,13 @@
 @using RacingResource.Utilities
 
 @{
-    ViewBag.Title = Model.Forename + " " + Model.Surname;
+    string name = Model.AlternateForename ?? Model.Forename;
+    name += " " + Model.Surname;
+    ViewBag.Title = name;
     List<Status> tweets = (List<Status>)ViewData["Tweets"];
 }
 
-<h1>@(Model.Forename + " " + Model.Surname)</h1>
+<h1>@(name)</h1>
 
 <div class="row">
 
