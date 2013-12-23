@@ -132,6 +132,22 @@ namespace RacingResource.Controllers
             return RedirectToAction("Index");
         }
 
+        public JsonResult Sires(string term)
+        {
+            var data = (from Horse h in db.Horses
+                        where h.Sex == "Colt" && h.Name.ToLower().StartsWith(term.ToLower())
+                        select new { label = h.Name, value = h.Id }).ToArray();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Dams(string term)
+        {
+            var data = (from Horse h in db.Horses
+                        where h.Sex == "Filly" && h.Name.ToLower().StartsWith(term.ToLower())
+                        select new { label = h.Name, value = h.Id }).ToArray();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

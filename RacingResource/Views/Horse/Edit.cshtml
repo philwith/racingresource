@@ -1,5 +1,7 @@
 ﻿@model RacingResource.Models.Horse
 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
 @{
     ViewBag.Title = "Edit";
 }
@@ -30,10 +32,77 @@
             @Html.ValidationMessageFor(model => model.YearOfBirth)
         </div>
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sex)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Sex)
+            @Html.ValidationMessageFor(model => model.Sex)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nationality)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nationality)
+            @Html.ValidationMessageFor(model => model.Nationality)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FlatRating)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FlatRating)
+            @Html.ValidationMessageFor(model => model.FlatRating)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AWRating)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AWRating)
+            @Html.ValidationMessageFor(model => model.AWRating)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HurdleRating)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HurdleRating)
+            @Html.ValidationMessageFor(model => model.HurdleRating)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ChaseRating)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ChaseRating)
+            @Html.ValidationMessageFor(model => model.ChaseRating)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sire)
+        </div>
+
+        <div class="editor-field">
+            <div class="ui-widget">
+                <input id="Sire" type="text" value="@(Model.Sire != null ? Model.Sire.Name : string.Empty)" />
+                @Html.HiddenFor(model => model.SireId)
+            </div>
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Dam)
+        </div>
+        <div class="editor-field">
+            <div class="ui-widget">
+                <input id="Dam" type="text" value="@(Model.Dam != null ? Model.Dam.Name : string.Empty)" />
+                @Html.HiddenFor(model => model.DamId)
+            </div>
+        </div>
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+</fieldset>
 }
 
 <div>
@@ -42,4 +111,39 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+
+    <script>
+
+        jQuery.curCSS = jQuery.css;
+
+        $(function () {
+            $("#Sire").autocomplete({
+                source: "/Horse/Sires",
+                minLength: 2,
+                select: function (event, ui) {
+                    event.preventDefault();
+                    if (ui != null)
+                    {
+                        $("#Sire").val(ui.item.label);
+                        $("#SireId").val(ui.item.value);
+                    }
+                }
+            });
+        });
+
+        $(function () {
+            $("#Dam").autocomplete({
+                source: "/Horse/Dams",
+                minLength: 2,
+                select: function (event, ui) {
+                    event.preventDefault();
+                    if (ui != null) {
+                        $("#Dam").val(ui.item.label);
+                        $("#DamId").val(ui.item.value);
+                    }
+                }
+            });
+        });
+    </script>
 }

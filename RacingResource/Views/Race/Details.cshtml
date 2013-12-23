@@ -24,6 +24,9 @@
                     Distance
                 </th>
                 <th>
+                    Jockey
+                </th>
+                <th>
                     Weight
                 </th>
                 <th>
@@ -38,6 +41,7 @@
                     @Html.ResponsiveTd("Position", r.Position)
                     @Html.ResponsiveTd("Name", Html.ActionLink(r.Horse.Name, "Details", "Horse", new { id = r.Horse.Id }, null))
                     @Html.ResponsiveTd("Distance", r.Distance)
+                    @Html.ResponsiveTd("Jockey", Html.ActionLink((r.Jockey.Initials ?? r.Jockey.Forenames) + " " + r.Jockey.Surname, "Details", "Jockey", new { id = r.Jockey.Id }, null))
                     @Html.ResponsiveTd("Weight", StringUtilities.FormatWeight(r.Weight ?? 0))
                     @Html.ResponsiveTd("Odds", StringUtilities.DoubleToFraction(r.StartingPrice ?? 0.0))
                 </tr>
