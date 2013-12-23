@@ -19,9 +19,29 @@ namespace RacingResource.Controllers
         //
         // GET: /Jockey/
 
-        public ActionResult Index()
+        public ActionResult Index(int? p, string s, string cs)
         {
-            return View(db.Jockeys.ToList());
+             int page = p ?? 1;
+            ViewBag.Page = p;
+            ViewBag.CurrentSearch = cs;
+
+            if (Request.HttpMethod == "GET")
+            {
+                s = cs;
+            }
+            else
+            {
+                page = 1;
+                ViewBag.Page = null;
+            }
+            ViewBag.CurrentSearch = s;
+            if (!String.IsNullOrEmpty(s))
+            {
+                return View(db.Jockeys.Where(j => j.Surname.ToLower().Contains(s.ToLower())).OrderBy(j => j.Surname).ToPagedList(page, 20));
+            }
+
+
+            return View(db.Jockeys.OrderBy(j => j.Surname).ToPagedList(page, 20));
         }
 
         //
@@ -57,7 +77,7 @@ namespace RacingResource.Controllers
                 }
             }
             int page = p ?? 1;
-            ViewBag.Results = db.Results.Include("Race.Course").Include("Horse").Where(r => r.Jockey.Id == jockey.Id).OrderByDescending(r => r.Race.OffTime).ToPagedList(page, 50);
+            ViewBag.Results = db.Results.Include("Race.Meeting.Course").Include("Horse").Where(r => r.Jockey.Id == jockey.Id).OrderByDescending(r => r.Race.OffTime).ToPagedList(page, 50);
             return View(jockey);
         }
 

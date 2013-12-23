@@ -1,5 +1,7 @@
 ﻿@using RacingResource.Utilities
-@model IEnumerable<RacingResource.Models.Jockey>
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList<RacingResource.Models.Jockey>
 
 @{
     ViewBag.Title = "Jockeys";
@@ -7,9 +9,21 @@
 
 <h2>Jockeys</h2>
 
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search By Name : @Html.TextBox("s", ViewBag.CurrentSearch as string, new { @class = "input-medium search-query" })
+        <button type="submit" class="btn">Search</button>
+    </p>
+}
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@Html.PagedListPager(Model, p => Url.Action("Index", new { p, cs = ViewBag.CurrentSearch }))
+
 <table class="table table-striped">
     <thead>
         <tr>
