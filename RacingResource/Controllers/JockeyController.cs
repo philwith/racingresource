@@ -6,6 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RacingResource.Models;
+using RacingResource.Utilities;
+using LinqToTwitter;
+using PagedList;
 
 namespace RacingResource.Controllers
 {
@@ -23,14 +26,38 @@ namespace RacingResource.Controllers
 
         //
         // GET: /Jockey/Details/5
-
-        public ActionResult Details(int id = 0)
+        [OutputCache(Duration = 180)]
+        public ActionResult Details(int id = 0, int? p = 1)
         {
             Jockey jockey = db.Jockeys.Find(id);
             if (jockey == null)
             {
                 return HttpNotFound();
             }
+            if (jockey.TwitterId != null)
+            {
+                var auth = TwitterUtilities.GetAuthorizer();
+                var ctx = new TwitterContext(auth);
+                var tweets =
+                    from tweet in ctx.Status
+                    where tweet.Type == StatusType.User
+                          && tweet.ScreenName == jockey.TwitterId
+                    select tweet;
+
+                if (tweets != null)
+                {
+                    try
+                    {
+                        ViewData["Tweets"] = tweets.ToList();
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Tweet problem...");
+                    }
+                }
+            }
+            int page = p ?? 1;
+            ViewBag.Results = db.Results.Include("Race.Course").Include("Horse").Where(r => r.Jockey.Id == jockey.Id).OrderByDescending(r => r.Race.OffTime).ToPagedList(page, 50);
             return View(jockey);
         }
 

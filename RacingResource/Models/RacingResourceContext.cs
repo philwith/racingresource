@@ -85,5 +85,7 @@ namespace RacingResource.Models
         #endregion
 
         public DbSet<Race> Races { get; set; }
+
+        public DbSet<Result> Results { get; set; }
     }
 }
