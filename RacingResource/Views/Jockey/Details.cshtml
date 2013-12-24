@@ -86,7 +86,7 @@
             <tr>
                 @Html.ResponsiveTd("Date", r.Race.OffTime.ToString("d MMM yy"))
                 @Html.ResponsiveTd("Course", Html.ActionLink(r.Race.Meeting.Course.Name, "Details", "Course", new { id = r.Race.Meeting.Course.Id }, null))
-                @Html.ResponsiveTd("Race", Html.ActionLink(r.Horse.Name, "Details", "Horse", new { id = r.Horse.Id }, null))
+                @Html.ResponsiveTd("Horse", Html.ActionLink(r.Horse.Name, "Details", "Horse", new { id = r.Horse.Id }, null))
                 @Html.ResponsiveTd("Race", Html.ActionLink(r.Race.Name, "Details", "Race", new { id = r.Race.Id }, null))
                 @Html.ResponsiveTd("Weight", StringUtilities.FormatWeight(r.Weight ?? 0))
                 @Html.ResponsiveTd("Odds", StringUtilities.DoubleToFraction(r.StartingPrice ?? 0.0))

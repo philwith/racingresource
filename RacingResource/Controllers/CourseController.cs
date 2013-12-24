@@ -46,7 +46,7 @@ namespace RacingResource.Controllers
         // GET: /Course/Details/5
 
         [OutputCache(Duration = 180)]
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id = 0, int? p = 1)
         {
             Course course = db.Courses.Include(t => t.Address).FirstOrDefault(t => t.Id == id);
             if (course == null)
@@ -68,6 +68,11 @@ namespace RacingResource.Controllers
                     ViewBag.Tweets = tweets.ToList();
                 }
             }
+
+            int page = p ?? 1;
+            ViewBag.Races = db.Races.Where(r => r.Meeting.Course.Id == course.Id).OrderByDescending(r => r.OffTime).ToPagedList(page, 50);
+          
+
             return View(course);
         }
 

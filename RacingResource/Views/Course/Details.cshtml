@@ -2,7 +2,12 @@
 @using BootstrapSupport
 @using LinqToTwitter
 @using RacingResource.Utilities
-
+@using PagedList;
+@using PagedList.Mvc;
+@using RacingResource.Models
+{
+    
+}
 @{
     ViewBag.Title = Model.Name;
 }
@@ -60,53 +65,84 @@
         <div id="map-canvas"></div>
     </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", Model.GetIdValue()) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
 
-@section scripts {
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script type="text/javascript">
-        var myCenter = new google.maps.LatLng(53, -1.33);
 
-        var marker = new google.maps.Marker({
-            position: myCenter,
-            url: '/',
-            animation: google.maps.Animation.DROP
-        });
+<h2>Races</h2>
+@Html.PagedListPager((PagedList<Race>)ViewBag.Races, p => Url.Action("Details", new { p }))
+<table class="table table-striped table-bordered table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                Off time
+            </th>
+            <th>
+                Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Race r in (PagedList<Race>)ViewBag.Races)
+        {
+            <tr>
+                @Html.ResponsiveTd("Date", r.OffTime.ToString("d MMM yy"))
+                @Html.ResponsiveTd("Off time", r.OffTime.ToString("hh.mm"))
+                @Html.ResponsiveTd("Name", Html.ActionLink(r.Name, "Details", "Race", new { id = r.Id }, null))
+            </tr>
+        }
+    </tbody>
 
-        var geocoder;
+    <p>
+        @Html.ActionLink("Edit", "Edit", Model.GetIdValue()) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 
-        function codeAddress(map) {
-            var address = '@(Model.Address.ToFormattedString())';
-            geocoder.geocode({ 'address': address }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    map.setCenter(results[0].geometry.location);
-                    marker.position = results[0].geometry.location;
-                    marker.setMap(map);
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status + ' ' + postcode);
-                }
+
+
+    @section scripts {
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script type="text/javascript">
+            var myCenter = new google.maps.LatLng(53, -1.33);
+
+            var marker = new google.maps.Marker({
+                position: myCenter,
+                url: '/',
+                animation: google.maps.Animation.DROP
             });
-        }
 
-        function initialize() {
-            geocoder = new google.maps.Geocoder();
-            var mapProp = {
-                center: myCenter,
-                zoom: 10,
-                draggable: false,
-                scrollwheel: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
+            var geocoder;
 
-            var map = new google.maps.Map(document.getElementById("map-canvas"), mapProp);
+            function codeAddress(map) {
+                var address = '@(Model.Address.ToFormattedString())';
+                geocoder.geocode({ 'address': address }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        map.setCenter(results[0].geometry.location);
+                        marker.position = results[0].geometry.location;
+                        marker.setMap(map);
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status + ' ' + postcode);
+                    }
+                });
+            }
 
-            codeAddress(map);
-        }
+            function initialize() {
+                geocoder = new google.maps.Geocoder();
+                var mapProp = {
+                    center: myCenter,
+                    zoom: 10,
+                    draggable: false,
+                    scrollwheel: false,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
 
-        google.maps.event.addDomListener(window, 'load', initialize);
-        google.maps.event.addListener(marker, 'click', function () { window.location.href = marker.url; });
-    </script>
-}
+                var map = new google.maps.Map(document.getElementById("map-canvas"), mapProp);
+
+                codeAddress(map);
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+            google.maps.event.addListener(marker, 'click', function () { window.location.href = marker.url; });
+        </script>
+    }
