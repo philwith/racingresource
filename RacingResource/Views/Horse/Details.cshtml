@@ -4,6 +4,7 @@
 @using RacingResource.Utilities
 @{
     ViewBag.Title = Model.Name;
+    List<Result> results = ViewBag.Results;
 }
 
 
@@ -202,7 +203,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(Result r in Model.Results.OrderByDescending(x => x.Race.OffTime))
+            @foreach(Result r in results.OrderByDescending(x => x.Race.OffTime))
             { 
                 <tr>
                     @Html.ResponsiveTd("Date", r.Race.OffTime.ToString("d MMM yy"))

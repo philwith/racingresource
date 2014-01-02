@@ -87,5 +87,8 @@ namespace RacingResource.Models
         public DbSet<Race> Races { get; set; }
 
         public DbSet<Result> Results { get; set; }
+
+        public DbSet<RaceGrade> RaceGrades { get; set; }
+        public DbSet<RaceType> RaceTypes { get; set; }
     }
 }

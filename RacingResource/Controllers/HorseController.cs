@@ -47,11 +47,17 @@ namespace RacingResource.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Horse horse = db.Horses.Include("SireProgeny").Include("DamProgeny").Include("Results.Jockey").Include("Results.Race.Meeting.Course").FirstOrDefault<Horse>(h => h.Id == id);
+            Horse horse = db.Horses.Include("SireProgeny").Include("DamProgeny").FirstOrDefault<Horse>(h => h.Id == id);
             if (horse == null)
             {
                 return HttpNotFound();
             }
+
+            DateTime today = DateTime.Now.Date;
+            ViewBag.Results = (from r in db.Results.Include("Jockey").Include("Race.Meeting.Course")
+                               where r.Horse.Id == id && r.Race.OffTime < today && !string.IsNullOrEmpty(r.Race.Name)
+                               select r).ToList();
+
             return View(horse);
         }
 
