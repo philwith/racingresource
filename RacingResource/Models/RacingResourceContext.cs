@@ -52,13 +52,13 @@ namespace RacingResource.Models
 
             modelBuilder.Entity<Race>().
                 HasOptional(e => e.Grade).
-                WithOptionalDependent().
+                WithMany().
                 Map(e => e.MapKey("RaceGradeId")).
                 WillCascadeOnDelete();
 
             modelBuilder.Entity<Race>().
                 HasOptional(e => e.Type).
-                WithOptionalDependent().
+                WithMany().
                 Map(e => e.MapKey("RaceTypeId")).
                 WillCascadeOnDelete();
 

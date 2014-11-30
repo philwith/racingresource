@@ -53,9 +53,9 @@ namespace RacingResource.Controllers
                 return HttpNotFound();
             }
 
-            DateTime today = DateTime.Now.Date;
+            DateTime now = DateTime.Now;
             ViewBag.Results = (from r in db.Results.Include("Jockey").Include("Race.Meeting.Course")
-                               where r.Horse.Id == id && r.Race.OffTime < today && !string.IsNullOrEmpty(r.Race.Name)
+                               where r.Horse.Id == id && r.Race.OffTime < now && !string.IsNullOrEmpty(r.Race.Name) && !string.IsNullOrEmpty(r.Position)
                                select r).ToList();
 
             return View(horse);
